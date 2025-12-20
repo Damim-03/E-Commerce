@@ -1,9 +1,24 @@
-import express, {Request, Response} from "express"
+import express, { Request, Response } from "express";
+import path from "path";
+import { NODE_ENV } from "./env";
 
-const app = express()
+const app = express();
 
-app.get("/api/health", (req: Request, res: Response) => {
-    res.send("The server is healthy.");
+app.use(express.json());
+
+app.get("/api/health", (_req: Request, res: Response) => {
+  res.send("The server is healthy.");
 });
+
+if (NODE_ENV === "production") {
+  // 👇 IMPORTANT: go UP TWO levels from Backend/dist → project root → admin/dist
+  const frontendPath = path.join(__dirname, "../../admin/dist");
+
+  app.use(express.static(frontendPath));
+
+  app.use((_req: Request, res: Response) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+}
 
 export default app;
