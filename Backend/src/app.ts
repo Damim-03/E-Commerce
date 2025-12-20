@@ -1,10 +1,12 @@
 import express, { Request, Response } from "express";
 import path from "path";
-import { NODE_ENV } from "./env";
+import { clerkMiddleware } from '@clerk/express'
+import { NODE_ENV } from "./config/env";
 
 const app = express();
 
 app.use(express.json());
+app.use(clerkMiddleware())
 
 app.get("/api/health", (_req: Request, res: Response) => {
   res.send("The server is healthy.");
