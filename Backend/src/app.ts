@@ -1,12 +1,19 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import { clerkMiddleware } from '@clerk/express'
+import { serve } from "inngest/express";
+import { functions, inngest } from "./config/inngest";
 import { NODE_ENV } from "./config/env";
 
 const app = express();
 
 app.use(express.json());
 app.use(clerkMiddleware())
+
+app.use("/api/inngest", serve({
+  client: inngest,
+  functions,
+}))
 
 app.get("/api/health", (_req: Request, res: Response) => {
   res.send("The server is healthy.");
