@@ -4,11 +4,14 @@ import { clerkMiddleware } from '@clerk/express'
 import { serve } from "inngest/express";
 import { functions, inngest } from "./config/inngest";
 import { NODE_ENV } from "./config/env";
+import rootRouter from "./routes";
 
 const app = express();
 
 app.use(express.json());
 app.use(clerkMiddleware())
+
+app.use('/api', rootRouter);
 
 app.use("/api/inngest", serve({
   client: inngest,
