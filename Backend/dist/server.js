@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
 const env_1 = require("./config/env");
 const db_1 = require("./db/db");
+const errors_1 = require("./middlewares/error-middleware/errors");
+app_1.default.use(errors_1.errorMiddleware); // يجب أن يكون آخر middleware
 app_1.default.listen(env_1.PORT, () => {
     console.log(`Server is running on http://localhost:${env_1.PORT}`);
     (0, db_1.connectDB)();

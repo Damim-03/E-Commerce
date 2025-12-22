@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 export const PORT = process.env.PORT;
 export const NODE_ENV = process.env.NODE_ENV;
@@ -14,3 +14,5 @@ export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET
 export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME
 
 export const INNGEST_SIGNING_KEY = process.env.INNGEST_SIGNING_KEY
+
+export const ADMIN_EMAIL = process.env.ADMIN_EMAIL
