@@ -26,6 +26,18 @@ export const addAddress = async(req: any, res: any, next: any) => {
       );
     }
 
+    // Validate required fields
+    if (!streetAddress || !city || !zipCode) {
+      return next(
+        new HttpException(
+          "Street address, city, and zip code are required",
+          ErrorCodes.MISSING_REQUIRED_FIELDS,
+          422
+        )
+      );
+   }
+
+
     // 🔹 إذا العنوان الجديد default → ألغِ القديم
     if (isDefault) {
       user.addresses.forEach((addr: any) => {

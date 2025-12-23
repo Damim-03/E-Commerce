@@ -1,8 +1,8 @@
-import { err } from "inngest/types";
 import HttpException, { ErrorCodes } from "../../../helpers/ROOTS/root";
+import { User } from "../../../models/users/user.model";
 
 
-export const addToWhishlist = async(req: any, res: any, next: any) => {
+export const addToWishlist = async(req: any, res: any, next: any) => {
     try {
     const { productId } = req.body;
     const user = (req as any).user;
@@ -56,9 +56,9 @@ export const addToWhishlist = async(req: any, res: any, next: any) => {
   }
 }
 
-export const getWishlist = (req: any, res: any, next: any) => {
+export const getWishlist = async(req: any, res: any, next: any) => {
     try {
-    const user = (req as any).user;
+    const user = await User.findById(req.user._id).populate('wishlist');
 
     if (!user) {
       return next(
