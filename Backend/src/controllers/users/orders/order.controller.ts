@@ -1,4 +1,3 @@
-import { error } from "node:console";
 import { Product } from "../../../models/products/product.model";
 import { Order } from "../../../models/orders/order.model";
 import HttpException, { ErrorCodes } from "../../../helpers/ROOTS/root";
