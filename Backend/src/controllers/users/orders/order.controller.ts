@@ -114,19 +114,21 @@ export const getUserOrders = async(req: any, res: any, next: any) => {
       .populate("orderItems.product")
       .sort({ createdAt: -1 });
 
-    // 🔎 check if each order has been reviewed
-    const ordersWithReviewStatus = await Promise.all(
-      orders.map(async (order) => {
-        const review = await Review.findOne({
-          orderId: order._id,
-        });
+    // 🧠 جلب كل الـ reviews مرة واحدة
+    const orderIds = orders.map((order) => order._id);
+    const reviews = await Review.find({
+      orderId: { $in: orderIds },
+    });
 
-        return {
-          ...order.toObject(),
-          hasReviewed: !!review,
-        };
-      })
+    const reviewedOrderIds = new Set(
+      reviews.map((review) => review.orderId.toString())
     );
+
+    // ✅ تحديد hasReviewed بدون أي query إضافي
+    const ordersWithReviewStatus = orders.map((order) => ({
+      ...order.toObject(),
+      hasReviewed: reviewedOrderIds.has(order._id.toString()),
+    }));
 
     return res.status(200).json({
       orders: ordersWithReviewStatus,
