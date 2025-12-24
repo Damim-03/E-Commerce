@@ -47,6 +47,11 @@ export enum ErrorCodes {
   THIRD_PARTY_SERVICE_ERROR = 3003, // Cloudinary, Stripe, etc.
 
   /* =========================
+     GENERIC / COMMON
+  ========================= */
+  NOT_FOUND = 4004,
+
+  /* =========================
      PRODUCT (5000–5099)
   ========================= */
   PRODUCT_NOT_FOUND = 5001,
