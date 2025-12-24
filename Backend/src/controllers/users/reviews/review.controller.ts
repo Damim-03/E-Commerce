@@ -1,4 +1,3 @@
-import { error } from "node:console";
 import { Order } from "../../../models/orders/order.model";
 import { Review } from "../../../models/reviews/review.model";
 import { Product } from "../../../models/products/product.model";
