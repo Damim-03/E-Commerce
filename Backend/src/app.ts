@@ -3,13 +3,18 @@ import path from "path";
 import { clerkMiddleware } from '@clerk/express'
 import { serve } from "inngest/express";
 import { functions, inngest } from "./config/inngest";
-import { NODE_ENV } from "./config/env";
+import { CLIENT_URL, NODE_ENV } from "./config/env";
 import rootRouter from "./routes";
+import cors from "cors"
 
 const app = express();
 
 app.use(express.json());
 app.use(clerkMiddleware())
+app.use(cors({
+    origin: CLIENT_URL,
+    credentials: true
+}))
 
 app.use('/api', rootRouter);
 
