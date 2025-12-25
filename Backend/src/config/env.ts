@@ -16,3 +16,5 @@ export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME
 export const INNGEST_SIGNING_KEY = process.env.INNGEST_SIGNING_KEY
 
 export const ADMIN_EMAIL = process.env.ADMIN_EMAIL
+
+export const CLIENT_URL = process.env.CLIENT_URL
