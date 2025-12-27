@@ -1,15 +1,21 @@
 import { Outlet } from "react-router"
+import Navbar from "../../components/Nav-side/Navbar"
+import Sidebar from "../../components/Nav-side/Sidebar"
 
 const DashboardLayout = () => {
   return (
-    <div>
-      <h1>sidebar</h1>
-      
-      <div>content</div>
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer" type="checkbox" className="drawer-toggle" defaultChecked/>
 
-      <div>Dashboard</div>
+      <div className="drawer-content">
+        <Navbar />
 
-      <Outlet />
+        <main className="pt-6">
+            <Outlet />
+        </main>
+      </div>
+
+      <Sidebar />
     </div>
   )
 }
