@@ -12,9 +12,7 @@ export const productApi = {
     },
 
     updateProduct: async (id: string, formData: FormData) => {
-        const { data } = await axiosInstance.put(`/admin/products/${id}`, 
-            formData, { headers: { "Content-Type": "multipart/form-data" } 
-        });
+        const { data } = await axiosInstance.put(`/admin/products/${id}`, formData);
         return data;
     }
 }

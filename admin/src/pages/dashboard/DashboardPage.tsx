@@ -84,7 +84,7 @@ const DashboardPage = () => {
 
                 <tbody>
                   {recentOrders.map((order) => (
-                    <tr key={order.id}>
+                    <tr key={order._id}>
                       <td>
                         <span className="font-medium">
                           #{order._id.slice(-8).toUpperCase()}
@@ -95,7 +95,7 @@ const DashboardPage = () => {
                         <div>
                           <div className="font-medium">{order.shippingAddress.fullName}</div>
                           <div className="text-sm opacity-60">
-                            {order.orderItems.length} items(s)
+                            {order.orderItems.length} item{order.orderItems.length !== 1 ? 's' : ''}
                           </div>
                         </div>
                       </td>
@@ -137,6 +137,3 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
-
-
-// the video is paused in 5:59:58

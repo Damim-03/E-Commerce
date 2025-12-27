@@ -1,4 +1,3 @@
-import type { Key } from "react";
 
 export interface OrderItem {
   name: string;
@@ -16,7 +15,6 @@ export interface ShippingAddress {
 }
 
 export interface Order {
-  id: Key | null | undefined;
   _id: string;
   status: "pending" | "shipped" | "delivered";
   totalPrice: number;
