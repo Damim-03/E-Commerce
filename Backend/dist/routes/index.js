@@ -5,6 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const admin_route_1 = __importDefault(require("./admin/admin.route"));
+const users_route_1 = __importDefault(require("./users/users.route"));
+const order_route_1 = __importDefault(require("./orders/order.route"));
+const product_route_1 = __importDefault(require("./products/product.route"));
+const review_route_1 = __importDefault(require("./reviews/review.route"));
+const cart_route_1 = __importDefault(require("./cart/cart.route"));
 const rootRouter = (0, express_1.Router)();
 rootRouter.use('/admin', admin_route_1.default);
+rootRouter.use('/users', users_route_1.default);
+rootRouter.use('/orders', order_route_1.default);
+rootRouter.use('/product', product_route_1.default);
+rootRouter.use('/reviews', review_route_1.default);
+rootRouter.use('/cart', cart_route_1.default);
 exports.default = rootRouter;

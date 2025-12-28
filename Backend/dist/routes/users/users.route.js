@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../../middlewares/only-admin/auth.middleware");
+const address_controller_1 = require("../../controllers/users/addresses/address.controller");
+const error_handler_1 = require("../../helpers/ERRORS/error-handler");
+const wishlist_controller_1 = require("../../controllers/users/wishlist/wishlist.controller");
+const usersRoutes = (0, express_1.Router)();
+usersRoutes.use(auth_middleware_1.protectRoute);
+usersRoutes.post('/addresses', (0, error_handler_1.errorHandler)(address_controller_1.addAddress));
+usersRoutes.get('/addresses', (0, error_handler_1.errorHandler)(address_controller_1.getAddresses));
+usersRoutes.put('/addresses/:addressId', (0, error_handler_1.errorHandler)(address_controller_1.updateAddress));
+usersRoutes.delete('/addresses/:addressId', (0, error_handler_1.errorHandler)(address_controller_1.deleteAddress));
+usersRoutes.post('/wishlist', wishlist_controller_1.addToWishlist);
+usersRoutes.get('/wishlist', wishlist_controller_1.getWishlist);
+usersRoutes.delete('/wishlist/:productId', wishlist_controller_1.removeFromWishlist);
+exports.default = usersRoutes;

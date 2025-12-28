@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../../middlewares/only-admin/auth.middleware");
+const order_controller_1 = require("../../controllers/users/orders/order.controller");
+const orderRoutes = (0, express_1.Router)();
+orderRoutes.use(auth_middleware_1.protectRoute);
+orderRoutes.post('/', order_controller_1.createOrders);
+orderRoutes.get('/', order_controller_1.getUserOrders);
+exports.default = orderRoutes;

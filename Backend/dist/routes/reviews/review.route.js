@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../../middlewares/only-admin/auth.middleware");
+const review_controller_1 = require("../../controllers/users/reviews/review.controller");
+const reviewRoutes = (0, express_1.Router)();
+reviewRoutes.use(auth_middleware_1.protectRoute);
+reviewRoutes.post('/', review_controller_1.createReview);
+reviewRoutes.delete('/:reviewId', review_controller_1.deleteReview);
+exports.default = reviewRoutes;
