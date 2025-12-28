@@ -10,11 +10,6 @@ import {
   XIcon,
 } from "lucide-react";
 import { getStockStatusBadge } from "../../lib/utils/utils";
-
-/* -------------------- TYPES -------------------- */
-
-type ProductsResponse = Product[];
-
 /* -------------------- COMPONENT -------------------- */
 
 const ProductPage = () => {
