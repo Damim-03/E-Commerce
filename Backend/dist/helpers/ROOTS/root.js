@@ -40,6 +40,10 @@ var ErrorCodes;
     ErrorCodes[ErrorCodes["DATABASE_ERROR"] = 3002] = "DATABASE_ERROR";
     ErrorCodes[ErrorCodes["THIRD_PARTY_SERVICE_ERROR"] = 3003] = "THIRD_PARTY_SERVICE_ERROR";
     /* =========================
+       GENERIC / COMMON
+    ========================= */
+    ErrorCodes[ErrorCodes["NOT_FOUND"] = 4004] = "NOT_FOUND";
+    /* =========================
        PRODUCT (5000–5099)
     ========================= */
     ErrorCodes[ErrorCodes["PRODUCT_NOT_FOUND"] = 5001] = "PRODUCT_NOT_FOUND";

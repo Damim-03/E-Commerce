@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npm run build && nodemon src/server.ts",
     "build": "tsc",
-    "start": "npm run build && node dist/server.js"
+    "start": "npm run build && node dist/server.js",
+    "seed:products": "ts-node src/seeds/index.ts"
   },
   "keywords": [],
   "author": "",
