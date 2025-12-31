@@ -1,17 +1,17 @@
-
 export interface OrderItem {
   name: string;
-  qty: number;
+  quantity: number;
   price: number;
   product: string;
 }
 
 export interface ShippingAddress {
   fullName: string;
-  address: string;
   city: string;
-  postalCode: string;
-  country: string;
+  state: string;
+  address?: string;
+  postalCode?: string;
+  country?: string;
 }
 
 export interface Order {
