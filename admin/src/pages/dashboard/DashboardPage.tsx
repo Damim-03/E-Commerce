@@ -6,7 +6,11 @@ import {
   ShoppingBagIcon,
   UsersIcon,
 } from "lucide-react";
-import { capitalizeText, formatDate, getOrderStatusBadge } from "../../lib/utils/utils";
+import {
+  capitalizeText,
+  formatDate,
+  getOrderStatusBadge,
+} from "../../lib/utils/utils";
 import type { Order } from "../../types/order";
 
 const DashboardPage = () => {
@@ -62,12 +66,14 @@ const DashboardPage = () => {
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">Recent Orders</h2>
-          { ordersLoading ? (
-              <div className="flex justify-center py-8">
-                <span className="loading loading-spinner loading-lg"/>
-              </div>
+          {ordersLoading ? (
+            <div className="flex justify-center py-8">
+              <span className="loading loading-spinner loading-lg" />
+            </div>
           ) : recentOrders.length === 0 ? (
-            <div className="text-center py-8 text-base-content/60">No recent orders.</div>
+            <div className="text-center py-8 text-base-content/60">
+              No recent orders.
+            </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="table">
@@ -93,9 +99,12 @@ const DashboardPage = () => {
 
                       <td>
                         <div>
-                          <div className="font-medium">{order.shippingAddress.fullName}</div>
+                          <div className="font-medium">
+                            {order.shippingAddress.fullName}
+                          </div>
                           <div className="text-sm opacity-60">
-                            {order.orderItems.length} item{order.orderItems.length !== 1 ? 's' : ''}
+                            {order.orderItems.length} item
+                            {order.orderItems.length !== 1 ? "s" : ""}
                           </div>
                         </div>
                       </td>
@@ -103,7 +112,8 @@ const DashboardPage = () => {
                       <td>
                         <div className="text-sm">
                           {order.orderItems[0]?.name}
-                          {order.orderItems.length > 1 && ` +${order.orderItems.length - 1} more`}
+                          {order.orderItems.length > 1 &&
+                            ` +${order.orderItems.length - 1} more`}
                         </div>
                       </td>
 
@@ -114,7 +124,11 @@ const DashboardPage = () => {
                       </td>
 
                       <td>
-                        <div className={`badge ${getOrderStatusBadge(order.status)}`}>
+                        <div
+                          className={`badge ${getOrderStatusBadge(
+                            order.status
+                          )}`}
+                        >
                           {capitalizeText(order.status)}
                         </div>
                       </td>
