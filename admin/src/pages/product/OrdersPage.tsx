@@ -35,7 +35,7 @@ const OrdersPage = () => {
   return (
     <div className="space-y-6">
       {/* HEADER */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 pl-6">
         <h1 className="text-2xl font-bold">Orders</h1>
         <p className="text-base-content/70">Manage customer orders</p>
       </div>
